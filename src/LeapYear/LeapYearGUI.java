@@ -9,7 +9,28 @@ public class LeapYearGUI extends JFrame{
     private JTextField tfYear;
     private JButton btnCheckYear;
 public LeapYearGUI() {
+    btnCheckYear.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                int year = Integer.parseInt(tfYear.getText());
 
+                if (year < 0) {
+                    throw new Exception();
+                }
+
+                if (year % 4 == 0) {
+                    JOptionPane.showMessageDialog(null, "Leap year");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not a leap year");
+                }
+            } catch (NumberFormatException e1) {
+                JOptionPane.showMessageDialog(null, "Input must be a whole number!");
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(null, "Input must not be negative!");
+            }
+        }
+    });
 }
 
 public static void main(String[] args) {
